@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Board from "./components/Board";
 import "./styles/root.scss";
 export default () => (
