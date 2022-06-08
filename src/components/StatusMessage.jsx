@@ -25,7 +25,7 @@ const StatusMessage = ({ winner, current }) => {
       {!winner && Nomoves && (
         <>
           <span className="text-green">X</span> and{" "}
-          <span className="text-orange">O</span>{" "}
+          <span className="text-orange">O</span> - Draw
         </>
       )}
     </div>
