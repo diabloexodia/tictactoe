@@ -15,7 +15,8 @@ const App = () => {
   const { winner, winningSquares } = calculateWinner(current.board);
 
   const handldeSquare = (position) => {
-    if (current.board[position] || winner) return;
+    if (current.board[position] || winner || currentMove + 1 !== history.length)
+      return;
 
     sethistory((prev) => {
       const last = prev[prev.length - 1];
@@ -41,17 +42,28 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1>TIC-TAC-TOE</h1>
+      <h1>
+        <span className="text-green">TIC</span> -
+        <span className="text-pink">TAC</span>-
+        <span className="text-orange">TOE</span>
+      </h1>
       <StatusMessage winner={winner} current={current} />
       <Board
         board={current.board}
         handldeSquare={handldeSquare}
         winningSquares={winningSquares}
       />
-      <button type="button" onClick={onNewgame}>
+      <button
+        type="button"
+        onClick={onNewgame}
+        className={`btn-reset ${winner ? "active" : ""}`}
+      >
         Start new Game
       </button>
+
+      <h2 style={{ fontWeight: "normal" }}>Game History</h2>
       <History history={history} moveTo={moveTo} currentMove={currentMove} />
+      <div className="bg-balls"></div>
     </div>
   );
 };
