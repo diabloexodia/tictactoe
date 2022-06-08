@@ -1,9 +1,14 @@
 import React from "react";
 import Square from "./Square";
-const Board = ({ board, handldeSquare }) => {
+const Board = ({ board, handldeSquare, winningSquares }) => {
   const renderSquare = (position) => {
+    const iswinnningsquare = winningSquares.includes(position);
     return (
-      <Square value={board[position]} onClick={() => handldeSquare(position)} />
+      <Square
+        value={board[position]}
+        onClick={() => handldeSquare(position)}
+        iswinnningsquare={iswinnningsquare}
+      />
     );
   };
   return (
